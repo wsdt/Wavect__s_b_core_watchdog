@@ -1,5 +1,5 @@
 import urllib.request, json, requests
-import time
+import time, sys
 
 # GET #
 api_base_url = "https://api.dev.wavect.io/api/"
@@ -28,10 +28,13 @@ def send_msg_to_slack(res, err, full_api_uri):
 
 def evaluate_route(api_uri):
 	full_api_uri = api_base_url+api_type+api_version+api_uri
-	with urllib.request.urlopen(full_api_uri) as url:
-		data = json.loads(url.read().decode())
-		if data is None or data["err"] is not None or data["res"] is None:  # is res none for a test-query then we assume sth. is wrong
-			send_msg_to_slack(data["res"], data["err"], full_api_uri)
+	try:
+		with urllib.request.urlopen(full_api_uri) as url:
+			data = json.loads(url.read().decode())
+			if data is None or data["err"] is not None or data["res"] is None:  # is res none for a test-query then we assume sth. is wrong
+				send_msg_to_slack(data["res"], data["err"], full_api_uri)
+	except:
+		send_msg_to_slack(None, sys.exc_info()[0], full_api_uri)
 		
 
 def evaluate_all_routes():

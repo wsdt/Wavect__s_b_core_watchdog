@@ -35,11 +35,13 @@ def evaluate_route(api_uri):
 		
 
 def evaluate_all_routes():
+	print("Evaluating routes at "+time.ctime())
+	
 	# Main TODO TRIGGER in interval via docker 
 	for api_uri in api_uris_to_test:
 		evaluate_route(api_uri)
 	
+	time.sleep(api_test_interval_in_seconds - ((time.time() - starttime) % 60.0))
 
 while True:
-		print("Evaluating routes at "+time.ctime())
-		time.sleep(api_test_interval_in_seconds - ((time.time() - starttime) % 60.0))
+	evaluate_all_routes()

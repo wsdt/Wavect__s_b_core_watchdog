@@ -3,6 +3,7 @@
 Very simple watchdog for our core api. 
 Tests the most important route at specific intervals and notifies the system administrators via Slack in case of a failure. 
 
+<img src="https://github.com/wsdt/Wavect__s_b_core_watchdog/blob/master/Docs/Slack_Screenshot.PNG" />
 
 ## What was Wavect®? ("BeKind" from October 2018 - April 2019)
 Wavect® has been a Tech-Startup from October 2018 to May 2020 to offer low-priced and personalized Corporate-Social-Responsibility campaigns to SMEs. We basically built a social-platform where people can solve so-called challenges related to environment-protection, health and solidarity and win prizes based on their interests by companies they love (e.g. exclusive rebates, products, vouchers, ...).
